@@ -2,14 +2,14 @@
 
 /**
  * @author Piero Giusti (pierophp)
- * @version 0.1
+ * @version 0.2
  * Essa classe foi baseada nas informações do site da Fazenda:
  * http://pfe.fazenda.sp.gov.br/consist_ie.shtm
  * 
  * Correções:
  * No site diz que para o estado de MT o tamanho é 11, mas na verdade o tamanho é 9
  * Desabilitada a regra de AL que o 3° dígito deve ser 0,3,5,7,8. Encontrado caso válido que é 6.
- * 
+ * NO DF IEs começados com 075 também são válidos
  */
 class Valid
 {
@@ -408,8 +408,8 @@ class Valid
             }
         }
         else if ($estado == 'DF')
-        {
-
+        {           
+            
             $peso = array('p2', 'p1');
 
             $tamanho = 13;
@@ -422,7 +422,7 @@ class Valid
 
             $md = array(11, 11);
 
-            if (substr($ie, 0, 3) != '073' AND substr($ie, 0, 3) != '074')
+            if (substr($ie, 0, 3) != '073' AND substr($ie, 0, 3) != '074' AND substr($ie, 0, 3) != '075')
             {
                 return false;
             }
